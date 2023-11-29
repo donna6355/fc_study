@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:test/freezed_sample.dart';
 
 
 
 void main() {
-  runApp(ProviderScope(child: MyApp()));
+  runApp(ProviderScope(child: FreezedSample()));
 }
 
 class MyApp extends ConsumerWidget {
@@ -14,9 +15,9 @@ class MyApp extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final count = ref.watch(counterProvider);
-    ref.listen(counterProvider, (previous, next) { 
-      print('riverpod count :$previous, $next');
-    });
+    // ref.listen(counterProvider, (previous, next) { 
+    //   print('riverpod count :$previous, $next');
+    // });
 
     return MaterialApp(
       home: Scaffold(
