@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import './model/person.dart';
 
 class FreezedSample extends StatelessWidget {
@@ -22,6 +23,10 @@ class FreezedSample extends StatelessWidget {
             Text('p1.toString = ${p1.toString()}'),
             Text('p2.toJson = ${p2.toJson().toString()}'),
             Text('p1 == p2 ${p1 == p2}'),
+            ElevatedButton(
+              onPressed: () => context.go('/'), 
+              child: const Text('to riverpod Sample'),
+            ),
           ],),
         ),
       ),
