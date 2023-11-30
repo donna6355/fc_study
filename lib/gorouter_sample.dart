@@ -18,4 +18,9 @@ final router = GoRouter(
 /*
   context.go('/freezed');
 Navigating to a destination in GoRouter will replace the current stack of screens with the screens configured to be displayed for the destination route. 
+
+  context.go('/freezed',extra: 'test')
+  final String extraString = GoRouterState.of(context).extra! as String;
+provide additional data along with navigation.
+
  */

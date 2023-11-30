@@ -7,6 +7,7 @@ class FreezedSample extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final String extraString = GoRouterState.of(context).extra! as String;
     final Person p1 = Person(id: 1, name: 'Isaac', age: 3);
     final Person p2 = Person(id: 1, name: 'Isaac', age: 3);
 
@@ -17,6 +18,7 @@ class FreezedSample extends StatelessWidget {
         appBar: AppBar(title: const Text('Example')),
         body: Center(
           child: Column(children: [
+            Text(extraString),
             Text('p1.id = ${p1.id}'),
             Text('p1.name = ${p1.name}'),
             Text('p1.age = ${p1.age}'),
