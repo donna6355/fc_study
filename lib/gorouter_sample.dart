@@ -1,6 +1,7 @@
 import 'package:go_router/go_router.dart';
 import './freezed_sample.dart';
 import './riverpod_sample.dart';
+import './iamport_sample.dart';
 
 final router = GoRouter(
   routes: [
@@ -11,6 +12,9 @@ final router = GoRouter(
     GoRoute(
       path: '/freezed',
       builder: (ctx,state)=>const FreezedSample(),
+    ),
+    GoRoute(path:'/iamport',
+      builder: (ctx,state)=> Payment(),
     ),
   ],
 );
