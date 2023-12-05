@@ -1,4 +1,5 @@
 import 'package:go_router/go_router.dart';
+import './speed_dial_sample.dart';
 import './freezed_sample.dart';
 import './riverpod_sample.dart';
 import './iamport_sample.dart';
@@ -15,6 +16,9 @@ final router = GoRouter(
     ),
     GoRoute(path:'/iamport',
       builder: (ctx,state)=> Payment(),
+    ),
+    GoRoute(path:'/dial',
+      builder: (ctx,state)=> DialApp(),
     ),
   ],
 );
