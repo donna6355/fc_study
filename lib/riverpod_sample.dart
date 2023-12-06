@@ -21,7 +21,7 @@ class RiverPodSmp extends ConsumerWidget {
             children: [
               Text('$count'),
               ElevatedButton(
-                onPressed: () => context.go('/dial',extra: 'test'), 
+                onPressed: () => context.go('/iamport',extra: 'test'), 
                 child: const Text('to Freezed Sample'),
               ),
             ],

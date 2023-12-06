@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 /* 아임포트 결제 모듈을 불러옵니다. */
 import 'package:iamport_flutter/iamport_payment.dart';
@@ -16,11 +17,10 @@ class Payment extends StatelessWidget {
       ),
       /* 웹뷰 로딩 컴포넌트 */
       initialChild: Container(
-        child: Center(
+        child: const Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Image.asset('assets/images/iamport-logo.png'),
               Padding(padding: EdgeInsets.symmetric(vertical: 15)),
               Text('잠시만 기다려주세요...', style: TextStyle(fontSize: 20)),
             ],
@@ -42,7 +42,13 @@ class Payment extends StatelessWidget {
       ),
       /* [필수입력] 콜백 함수 */
       callback: (Map<String, String> result) {
-print('payment done ${result}');
+        print('iamport callback $result');
+        if (result['imp_success'] == 'true' || result['success'] == 'true') {
+          context.go('/freezed');
+        }else{
+          context.go('/dial');
+        }
+         
       },
     );
   }
