@@ -11,6 +11,7 @@ class Payment extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print('======iamport build start=========');
     return IamportPayment(
       appBar:  AppBar(
         title: const Text('아임포트 결제'),
@@ -28,7 +29,7 @@ class Payment extends StatelessWidget {
         ),
       ),
       /* [필수입력] 가맹점 식별코드 */
-      userCode: 'testtesttest',
+      userCode: 'imp87654969',
       /* [필수입력] 결제 데이터 */
       data: PaymentData(
         pg: 'html5_inicis',                                          // PG사
