@@ -11,6 +11,7 @@ class Car extends Vehicle {
   Car(String color)
       : super(
             color); //you need to inherit two var, one super the other override
+  //Car(super.color)
 
   @override
   String get definition => 'Car ${super.definition}';
@@ -25,10 +26,11 @@ class Hatch extends Car {
 
 class BMW extends Car {
   BMW(super.color); //BMW constructor의 argument가 바로 super.color로 할당됨!
+  //BMW(String color):super(color) 똑같은 syntax
 }
 
 main() {
-  final hatch = Hatch('red');
+  final hatch = Hatch(2000);
   final bmw = BMW('green');
   print(hatch.color);
   print('Result: ${hatch is Vehicle}');
