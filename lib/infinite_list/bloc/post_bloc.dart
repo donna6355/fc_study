@@ -1,9 +1,10 @@
 import 'dart:convert';
 
 import 'package:bloc/bloc.dart';
-import 'package:bloc_event_transformers/bloc_event_transformers.dart';
+import 'package:bloc_concurrency/bloc_concurrency.dart';
 import 'package:equatable/equatable.dart';
 import 'package:http/http.dart' as http;
+import 'package:stream_transform/stream_transform.dart';
 
 import '../models/post.dart';
 
@@ -12,13 +13,19 @@ part 'post_state.dart';
 
 const throttleDuration = Duration(milliseconds: 100);
 
+EventTransformer<E> throttleDroppable<E>(Duration duration) {
+  return (events, mapper) {
+    return droppable<E>().call(events.throttle(duration), mapper);
+  };
+}
+
 const _postLimit = 20;
 
 class PostBloc extends Bloc<PostEvent, PostState> {
   PostBloc({required this.httpClient}) : super(const PostState()) {
     on<PostFetched>(
       _onPostFetched,
-      transformer: throttle(throttleDuration),
+      transformer: throttleDroppable(throttleDuration),
     );
   }
   final http.Client httpClient;
