@@ -3,22 +3,29 @@ import './speed_dial_sample.dart';
 import './freezed_sample.dart';
 import './riverpod_sample.dart';
 import './iamport_sample.dart';
+import './media_query_sample.dart';
 
 final router = GoRouter(
   routes: [
     GoRoute(
       path: '/',
-      builder: (ctx,state)=>RiverPodSmp(),
+      builder: (ctx, state) => RiverPodSmp(),
     ),
     GoRoute(
       path: '/freezed',
-      builder: (ctx,state)=>const FreezedSample(),
+      builder: (ctx, state) => const FreezedSample(),
     ),
-    GoRoute(path:'/iamport',
-      builder: (ctx,state)=> Payment(),
+    GoRoute(
+      path: '/iamport',
+      builder: (ctx, state) => const Payment(),
     ),
-    GoRoute(path:'/dial',
-      builder: (ctx,state)=> DialApp(),
+    GoRoute(
+      path: '/dial',
+      builder: (ctx, state) => const DialApp(),
+    ),
+    GoRoute(
+      path: '/mediaquery',
+      builder: (ctx, state) => const MediaQueryTest(),
     ),
   ],
 );
