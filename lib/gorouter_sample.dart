@@ -4,11 +4,12 @@ import './freezed_sample.dart';
 import './riverpod_sample.dart';
 import './iamport_sample.dart';
 import './media_query_sample.dart';
+import 'status_bar_test.dart';
 
 final router = GoRouter(
   routes: [
     GoRoute(
-      path: '/',
+      path: '/asdf',
       builder: (ctx, state) => RiverPodSmp(),
     ),
     GoRoute(
@@ -26,6 +27,10 @@ final router = GoRouter(
     GoRoute(
       path: '/mediaquery',
       builder: (ctx, state) => const MediaQueryTest(),
+    ),
+    GoRoute(
+      path: '/',
+      builder: (ctx, state) => const StatusBarTest(),
     ),
   ],
 );
