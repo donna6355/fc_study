@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:test/secure_storage.dart';
 
 class StatusBarTest extends StatelessWidget {
   const StatusBarTest({super.key});
@@ -22,6 +23,12 @@ class StatusBarTest extends StatelessWidget {
                       SystemUiOverlayStyle.light);
                 },
                 child: Text('상태바 까맣게')),
+            FilledButton(
+                onPressed: () async {
+                  final res = await SecureStorage().getAccessToken();
+                  print(res); //null 리턴하고 문제 없음
+                },
+                child: Text('test'))
           ],
         ));
   }
