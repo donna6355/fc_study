@@ -7,6 +7,8 @@ class StatusBarTest extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setEnabledSystemUIMode(
+        SystemUiMode.leanBack); // hide status bar and bottom nav bar
     return Scaffold(
         appBar: AppBar(title: Text('it doesnt work...')),
         body: Column(

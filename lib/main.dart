@@ -7,6 +7,7 @@ void main() {
   runApp(
     ProviderScope(
       child: MaterialApp.router(
+        debugShowCheckedModeBanner: false,
         theme: ThemeData(
           appBarTheme: AppBarTheme(
             systemOverlayStyle: SystemUiOverlayStyle(

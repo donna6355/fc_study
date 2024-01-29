@@ -17,7 +17,7 @@ final router = GoRouter(
       builder: (ctx, state) => const FreezedSample(),
     ),
     GoRoute(
-      path: '/iamport',
+      path: '/pay',
       builder: (ctx, state) => const Payment(),
     ),
     GoRoute(
