@@ -21,6 +21,7 @@ class _ImplicitAnimationSampleState extends State<ImplicitAnimationSample> {
         // ),
 
         // AnimatedAlign, AnimatedOpacity, AnimatedGrid, AnimatedList, AnimatedIcon,
+        // Animatedpositioned, AnimatedPadding, AnimatedDefaultTextStyle, AnimatedThemeSize
         AnimatedContainer(
           width: _bigger ? 100 : 400,
           height: _bigger ? 100 : 400,
@@ -34,6 +35,51 @@ class _ImplicitAnimationSampleState extends State<ImplicitAnimationSample> {
           }),
           child: Icon(Icons.star),
         ),
+      ],
+    );
+  }
+}
+
+class TweeinAnimationSample extends StatefulWidget {
+  const TweeinAnimationSample({super.key});
+
+  @override
+  State<TweeinAnimationSample> createState() => _TweeinAnimationSampleState();
+}
+
+class _TweeinAnimationSampleState extends State<TweeinAnimationSample> {
+  static final angleTween = Tween<double>(begin: 0, end: 2 * 3.14);
+  //tween is mutable, can have many options
+  //best to declare tween as static final var in order to avoid creating new object
+  @override
+  Widget build(BuildContext context) {
+    return Stack(
+      children: [
+        Container(
+          width: 400,
+          height: 400,
+          color: Colors.amber,
+        ),
+        Center(
+          child: TweenAnimationBuilder(
+            tween: angleTween,
+            duration: const Duration(milliseconds: 600),
+            builder: (_, double angle, __) {
+              return Transform.rotate(
+                angle: angle,
+                child: ColorFiltered(
+                  colorFilter:
+                      const ColorFilter.mode(Colors.orange, BlendMode.overlay),
+                  child: Container(
+                    width: 100,
+                    height: 100,
+                    color: Colors.green,
+                  ),
+                ),
+              );
+            },
+          ),
+        )
       ],
     );
   }
