@@ -85,6 +85,52 @@ class _TweeinAnimationSampleState extends State<TweeinAnimationSample> {
   }
 }
 
+class BuiltInExplicitSample extends StatefulWidget {
+  const BuiltInExplicitSample({super.key});
+
+  @override
+  State<BuiltInExplicitSample> createState() => _BuiltInExplicitSampleState();
+}
+
+class _BuiltInExplicitSampleState extends State<BuiltInExplicitSample>
+    with SingleTickerProviderStateMixin {
+  late AnimationController _animationController;
+
+  @override
+  void initState() {
+    super.initState();
+    _animationController = AnimationController(
+        vsync: this, duration: const Duration(microseconds: 600))
+      ..repeat();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    //sizeTransition, FadeTransition, AlignTransition, ScaleTransition, SlideTransition
+    return Column(
+      children: [
+        RotationTransition(
+          turns: _animationController,
+          alignment: Alignment.center,
+          child: Container(
+            width: 100,
+            height: 100,
+            color: Colors.green,
+          ),
+        ),
+        Row(
+          children: [
+            ElevatedButton(
+                onPressed: _animationController.stop, child: Text('STOP')),
+            ElevatedButton(
+                onPressed: _animationController.repeat, child: Text('TURN')),
+          ],
+        )
+      ],
+    );
+  }
+}
+
 /*
 - Drawing based animation => required third party package (rive,lottie)
 - Code based animation => implicit && explicit
