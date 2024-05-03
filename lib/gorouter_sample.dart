@@ -4,6 +4,7 @@ import './freezed_sample.dart';
 import './riverpod_sample.dart';
 import './iamport_sample.dart';
 import './media_query_sample.dart';
+import 'animation_sample.dart';
 import 'status_bar_test.dart';
 
 final router = GoRouter(
@@ -30,7 +31,7 @@ final router = GoRouter(
     ),
     GoRoute(
       path: '/',
-      builder: (ctx, state) => const StatusBarTest(),
+      builder: (ctx, state) => const CustomExplicitSample(),
     ),
   ],
 );

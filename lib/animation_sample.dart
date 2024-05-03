@@ -105,6 +105,13 @@ class _BuiltInExplicitSampleState extends State<BuiltInExplicitSample>
   }
 
   @override
+  void dispose() {
+    // TODO: implement dispose
+    _animationController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     //sizeTransition, FadeTransition, AlignTransition, ScaleTransition, SlideTransition
     return Column(
@@ -131,6 +138,110 @@ class _BuiltInExplicitSampleState extends State<BuiltInExplicitSample>
   }
 }
 
+//repeat animation, puase and resume etc.
+//custom animation is needed such as funnel-shaped gradients
+class CustomExplicitSample extends StatefulWidget {
+  const CustomExplicitSample({super.key});
+
+  @override
+  State<CustomExplicitSample> createState() => _CustomExplicitSampleState();
+}
+
+class _CustomExplicitSampleState extends State<CustomExplicitSample>
+    with SingleTickerProviderStateMixin {
+  late AnimationController _animationController;
+
+  @override
+  void initState() {
+    super.initState();
+    _animationController = AnimationController(
+      vsync: this,
+      duration: const Duration(seconds: 5),
+    )..repeat();
+  }
+
+  @override
+  void dispose() {
+    _animationController.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        const Icon(Icons.cabin),
+        AnimatedBuilder(
+          animation: _animationController,
+          builder: (_, __) {
+            return ClipPath(
+              clipper: const BeamClipper(),
+              child: Container(
+                height: 1000,
+                decoration: BoxDecoration(
+                  gradient: RadialGradient(
+                    radius: 1.5,
+                    colors: [
+                      Colors.yellow,
+                      Colors.transparent,
+                    ],
+                    stops: [0, _animationController.value],
+                  ),
+                ),
+              ),
+            );
+          },
+        ),
+        //refactor to separate widget with an AnimatedWidget
+        BeamTransition(_animationController),
+      ],
+    );
+  }
+}
+
+class BeamTransition extends AnimatedWidget {
+  const BeamTransition(Animation<double> animation, {super.key})
+      : super(listenable: animation);
+
+  @override
+  Widget build(BuildContext context) {
+    final Animation<double> animation = listenable as Animation<double>;
+    return ClipPath(
+      clipper: const BeamClipper(),
+      child: Container(
+        height: 1000,
+        decoration: BoxDecoration(
+          gradient: RadialGradient(
+            radius: 1.5,
+            colors: [
+              Colors.yellow,
+              Colors.transparent,
+            ],
+            stops: [0, animation.value],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class BeamClipper extends CustomClipper<Path> {
+  const BeamClipper();
+
+  @override
+  getClip(Size size) {
+    return Path()
+      ..lineTo(size.width / 2, size.height / 2)
+      ..lineTo(size.width, size.height)
+      ..lineTo(0, size.height)
+      ..lineTo(size.width / 2, size.height / 2)
+      ..close();
+  }
+
+  /// Return false always because we always clip the same area.
+  @override
+  bool shouldReclip(CustomClipper oldClipper) => false;
+}
 /*
 - Drawing based animation => required third party package (rive,lottie)
 - Code based animation => implicit && explicit
