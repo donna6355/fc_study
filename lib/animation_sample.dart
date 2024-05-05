@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
 
 class ImplicitAnimationSample extends StatefulWidget {
   const ImplicitAnimationSample({super.key});
@@ -177,7 +178,7 @@ class _CustomExplicitSampleState extends State<CustomExplicitSample>
             return ClipPath(
               clipper: const BeamClipper(),
               child: Container(
-                height: 1000,
+                height: 300,
                 decoration: BoxDecoration(
                   gradient: RadialGradient(
                     radius: 1.5,
@@ -209,7 +210,7 @@ class BeamTransition extends AnimatedWidget {
     return ClipPath(
       clipper: const BeamClipper(),
       child: Container(
-        height: 1000,
+        height: 300,
         decoration: BoxDecoration(
           gradient: RadialGradient(
             radius: 1.5,
@@ -241,6 +242,23 @@ class BeamClipper extends CustomClipper<Path> {
   /// Return false always because we always clip the same area.
   @override
   bool shouldReclip(CustomClipper oldClipper) => false;
+}
+
+/*Lottie is a mobile library for Android and iOS that parses Adobe After Effects animations exported as json with Bodymovin and renders them natively on mobile! */
+
+class LottieSample extends StatelessWidget {
+  const LottieSample({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return ListView(
+      children: [
+        Lottie.asset('assets/lottie.json'),
+        Lottie.network(
+            'https://raw.githubusercontent.com/xvrh/lottie-flutter/master/example/assets/Mobilo/A.json'),
+      ],
+    );
+  }
 }
 /*
 - Drawing based animation => required third party package (rive,lottie)

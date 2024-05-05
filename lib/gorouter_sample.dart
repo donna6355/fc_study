@@ -31,7 +31,7 @@ final router = GoRouter(
     ),
     GoRoute(
       path: '/',
-      builder: (ctx, state) => const CustomExplicitSample(),
+      builder: (ctx, state) => const LottieSample(),
     ),
   ],
 );
