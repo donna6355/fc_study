@@ -32,7 +32,7 @@ final router = GoRouter(
     ),
     GoRoute(
       path: '/',
-      builder: (ctx, state) => const StateMachineSkills(),
+      builder: (ctx, state) => const Bird(),
     ),
   ],
 );

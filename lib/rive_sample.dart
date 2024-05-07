@@ -1,91 +1,94 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:rive/rive.dart';
 
-/// An example showing how to drive a StateMachine via one numeric input.
-class StateMachineSkills extends StatefulWidget {
-  const StateMachineSkills({Key? key}) : super(key: key);
+/// Toggle을 하면 춤을 추고, 버튼을 클릭하면 예정된 움직임 한번 실행되는 버전
+class Bird extends StatefulWidget {
+  const Bird({super.key});
 
   @override
-  State<StateMachineSkills> createState() => _StateMachineSkillsState();
+  State<Bird> createState() => _BirdState();
 }
 
-class _StateMachineSkillsState extends State<StateMachineSkills> {
-  /// Tracks if the animation is playing by whether controller is running.
-  bool get isPlaying => _controller?.isActive ?? false;
+class _BirdState extends State<Bird> {
+  late StateMachineController _stmController;
 
-  Artboard? _riveArtboard;
-  StateMachineController? _controller;
-  SMINumber? _levelInput;
+  // Inputs를 보고 SMI 값을 찾아봄
+  SMIBool? _dance;
+  SMITrigger? _lookUp;
 
   @override
   void initState() {
     super.initState();
+  }
 
-    // Load the animation file from the bundle, note that you could also
-    // download this. The RiveFile just expects a list of bytes.
-    rootBundle.load('assets/skills.riv').then(
-      (data) async {
-        // Load the RiveFile from the binary data.
-        final file = RiveFile.import(data);
+  // Version 1
+  void _onInit(Artboard art) {
+    // Animations에 있는 StateMachine이름 birb
+    _stmController = StateMachineController.fromArtboard(art, 'birb')
+        as StateMachineController;
+    art.addController(_stmController);
+    // Inputs에 있는 dance
+    _dance = _stmController.findSMI('dance');
+    _lookUp = _stmController.findSMI('look up');
+  }
 
-        // The artboard is the root of the animation and gets drawn in the
-        // Rive widget.
-        final artboard = file.mainArtboard;
-        var controller =
-            StateMachineController.fromArtboard(artboard, 'Designer\'s Test');
-        if (controller != null) {
-          artboard.addController(controller);
-          _levelInput = controller.getNumberInput('Level');
-        }
-        setState(() => _riveArtboard = artboard);
-      },
+  void toggleDance(bool newValue) {
+    setState(
+      () => _dance!.value = newValue,
     );
+  }
+
+  void triggerLookUp() {
+    // fire()는 한번만 실행된다.
+    _lookUp?.fire();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Skills Machine'),
-      ),
-      body: Center(
-        child: _riveArtboard == null
-            ? const SizedBox()
-            : Stack(
+      body: Column(
+        children: [
+          const SizedBox(height: 100),
+          const Text(
+            'Toggle을 하면 춤을 추고, \n버튼을 클릭하면 예정된 움직임 한번 실행되는 버전',
+            textAlign: TextAlign.center,
+          ),
+          Expanded(
+            child: SizedBox(
+              height: MediaQuery.of(context).size.height,
+              width: MediaQuery.of(context).size.width,
+              child: RiveAnimation.asset(
+                'assets/bird.riv',
+                onInit: _onInit,
+                fit: BoxFit.fitWidth,
+                alignment: Alignment.center,
+              ),
+            ),
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              Row(
                 children: [
-                  Positioned.fill(
-                    child: Rive(
-                      artboard: _riveArtboard!,
-                      fit: BoxFit.cover,
-                    ),
-                  ),
-                  Positioned.fill(
-                    bottom: 32,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.end,
-                      children: [
-                        ElevatedButton(
-                          child: const Text('Beginner'),
-                          onPressed: () => _levelInput?.value = 0,
-                        ),
-                        const SizedBox(width: 10),
-                        ElevatedButton(
-                          child: const Text('Intermediate'),
-                          onPressed: () => _levelInput?.value = 1,
-                        ),
-                        const SizedBox(width: 10),
-                        ElevatedButton(
-                          child: const Text('Expert'),
-                          onPressed: () => _levelInput?.value = 2,
-                        ),
-                      ],
-                    ),
+                  const Text('Dance'),
+                  Switch(
+                    value: _dance == null ? false : _dance!.value,
+                    onChanged: (value) => toggleDance(value),
                   ),
                 ],
               ),
+              ElevatedButton(
+                onPressed: () {
+                  triggerLookUp();
+                },
+                child: const Text('look up'),
+              ),
+            ],
+          )
+        ],
       ),
     );
   }
 }
+
+//https://medium.com/@moo_min/rive%EB%A5%BC-flutter%EC%97%90%EC%84%9C-%EC%82%AC%EC%9A%A9%ED%95%98%EB%8A%94-%EB%B0%A9%EB%B2%95-1533ccbfc7ac
