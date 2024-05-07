@@ -5,6 +5,7 @@ import './riverpod_sample.dart';
 import './iamport_sample.dart';
 import './media_query_sample.dart';
 import 'animation_sample.dart';
+import 'rive_sample.dart';
 import 'status_bar_test.dart';
 
 final router = GoRouter(
@@ -31,7 +32,7 @@ final router = GoRouter(
     ),
     GoRoute(
       path: '/',
-      builder: (ctx, state) => const LottieSample(),
+      builder: (ctx, state) => const StateMachineSkills(),
     ),
   ],
 );
