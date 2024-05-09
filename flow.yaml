@@ -1,0 +1,21 @@
+# Maestro is the simplest and most effective mobile UI testing framework.
+# https://maestro.mobile.dev/
+
+# flow_contacts_android.yaml
+
+appId: com.example.test
+---
+- launchApp
+- tapOn: "look up"
+- assertVisible: "Toggle을 하면 춤을 추고, \n버튼을 클릭하면 예정된 움직임 한번 실행되는 버전"
+#togle switch
+- tapOn:
+    point: 35%,47%
+# - tapOn: "First Name"
+# - inputText: "John"
+# - tapOn: "Last Name"
+# - inputText: "Snow"
+# - tapOn: "Save"
+
+#maestro studio after running app then select each element to specify the flow
+#maestro test flow.yaml
