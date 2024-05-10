@@ -79,7 +79,7 @@ class Actions extends StatelessWidget {
                     child: const Icon(Icons.play_arrow),
                     onPressed: () => context
                         .read<TimerBloc>()
-                        .add(TimerStarted(duration: state.duration)),
+                        .add(TimerStarted(state.duration)),
                   )
                 : FloatingActionButton(
                     child: const Icon(Icons.replay),

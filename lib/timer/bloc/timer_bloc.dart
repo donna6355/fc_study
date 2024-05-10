@@ -2,10 +2,12 @@ import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 import '../ticker.dart';
 
 part 'timer_event.dart';
 part 'timer_state.dart';
+part 'timer_bloc.freezed.dart';
 
 class TimerBloc extends Bloc<TimerEvent, TimerState> {
   final Ticker _ticker;
@@ -34,7 +36,7 @@ class TimerBloc extends Bloc<TimerEvent, TimerState> {
     _tickerSubscription?.cancel();
     _tickerSubscription = _ticker.tick(ticks: event.duration).listen(
           (duration) => add(
-            _TimerTicked(duration: duration),
+            _TimerTicked(duration),
           ),
         );
   }
