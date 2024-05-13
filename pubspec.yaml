@@ -24,6 +24,7 @@ dependencies:
   flutter_secure_storage: ^9.0.0
   lottie: ^3.1.0
   rive: ^0.12.4
+  flutter_blue_plus: ^1.32.6
 
 dev_dependencies:
   flutter_test:
