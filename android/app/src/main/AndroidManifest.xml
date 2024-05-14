@@ -15,7 +15,9 @@
  
      <!-- legacy for Android 9 or lower -->
      <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" android:maxSdkVersion="28" />
-
+     
+    <!-- pedometer permission -->
+    <uses-permission android:name="android.permission.ACTIVITY_RECOGNITION" />
 
     <application
         android:usesCleartextTraffic="true"

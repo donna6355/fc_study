@@ -1,5 +1,6 @@
 import 'package:go_router/go_router.dart';
 import 'package:test/ble_sample.dart';
+import 'package:test/pedometer_sample.dart';
 import './speed_dial_sample.dart';
 import './freezed_sample.dart';
 import './riverpod_sample.dart';
@@ -33,7 +34,7 @@ final router = GoRouter(
     ),
     GoRoute(
       path: '/',
-      builder: (ctx, state) => const BluetoothSample(),
+      builder: (ctx, state) => const PedometerSample(),
     ),
   ],
 );

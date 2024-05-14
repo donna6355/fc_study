@@ -106,5 +106,11 @@
 	<string>We need BT access because it's a BT App.</string>
 	<key>NSBluetoothPeripheralUsageDescription</key>
 	<string>We need BT access because it's a BT App.</string>
+	<key>NSMotionUsageDescription</key>
+	<string>This application tracks your steps</string>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>processing</string>
+	</array>
 </dict>
 </plist>

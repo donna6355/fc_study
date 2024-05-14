@@ -157,3 +157,5 @@ class BluetoothAdapterStateObserver extends NavigatorObserver {
     _adapterStateSubscription = null;
   }
 }
+
+//https://github.com/boskokg/flutter_blue_plus/blob/master/example/lib/screens/scan_screen.dart
