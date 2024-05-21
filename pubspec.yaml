@@ -25,6 +25,7 @@ dependencies:
   lottie: ^3.1.0
   rive: ^0.12.4
   flutter_blue_plus: ^1.32.6
+  health: ^10.2.0
   # pedometer: ^4.0.1 // has limit better to use https://pub.dev/packages/health/example
 
 dev_dependencies:
