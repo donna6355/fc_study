@@ -27,6 +27,8 @@ dependencies:
   flutter_blue_plus: ^1.32.6
   health: ^10.2.0
   # pedometer: ^4.0.1 // has limit better to use https://pub.dev/packages/health/example
+  name_of_module:
+    path: name_of_module
 
 dev_dependencies:
   flutter_test:
