@@ -34,7 +34,7 @@ final router = GoRouter(
     ),
     GoRoute(
       path: '/',
-      builder: (ctx, state) => const PedometerSample(),
+      builder: (ctx, state) => const StatusBarTest(),
     ),
   ],
 );

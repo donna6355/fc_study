@@ -7,3 +7,4 @@ class Calculator {
 }
 
 //flutter create --template=package name_of_module
+//https://medium.com/flutter-community/mastering-flutter-modularization-in-several-ways-f5bced19101a
