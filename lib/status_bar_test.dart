@@ -32,13 +32,13 @@ class StatusBarTest extends StatelessWidget {
                   print(res); //null 리턴하고 문제 없음
                 },
                 child: Text('test')),
-            FilledButton(
-                onPressed: () async {
-                  int num = 3;
-                  int res = Calculator().addOne(num);
-                  print('$num+1 = $res');
-                },
-                child: Text('call fn from module'))
+            // FilledButton(
+            //     onPressed: () async {
+            //       int num = 3;
+            //       int res = Calculator().addOne(num);
+            //       print('$num+1 = $res');
+            //     },
+            //     child: Text('call fn from module'))
           ],
         ));
   }
