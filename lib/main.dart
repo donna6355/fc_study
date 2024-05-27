@@ -41,7 +41,17 @@ void main() {
           ),
         ),
         routerConfig: router,
+        builder: (context, child) => MediaQuery(
+          //limit possible extent of text scaling
+          data: MediaQuery.of(context).copyWith(
+              textScaler: MediaQuery.of(context)
+                  .textScaler
+                  .clamp(minScaleFactor: 0.8, maxScaleFactor: 1.6)),
+          child: child!,
+        ),
       ),
     ),
   );
 }
+
+//https://medium.com/@pomis172/properly-handling-text-scaling-in-flutter-313fe717816c
