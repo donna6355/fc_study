@@ -4,6 +4,13 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:test/gorouter_sample.dart';
 
 void main() {
+  //customize error screen
+  ErrorWidget.builder = (_) => const Center(child: Text('Error Occurs'));
+  //
+  FlutterError.onError = (details) {
+    FlutterError.dumpErrorToConsole(details);
+    //send crashlytics service...
+  };
   runApp(
     ProviderScope(
       child: MaterialApp.router(
@@ -55,3 +62,5 @@ void main() {
 }
 
 //https://medium.com/@pomis172/properly-handling-text-scaling-in-flutter-313fe717816c
+
+//https://medium.com/@LordChris/understanding-and-addressing-the-grey-screen-in-flutter-5e72c31f408f
