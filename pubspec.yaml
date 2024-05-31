@@ -29,6 +29,7 @@ dependencies:
   # pedometer: ^4.0.1 // has limit better to use https://pub.dev/packages/health/example
   name_of_module:
     path: name_of_module
+  auto_size_text: ^3.0.0
 
 dev_dependencies:
   flutter_test:
