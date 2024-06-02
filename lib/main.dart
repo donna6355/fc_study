@@ -64,3 +64,10 @@ void main() {
 //https://medium.com/@pomis172/properly-handling-text-scaling-in-flutter-313fe717816c
 
 //https://medium.com/@LordChris/understanding-and-addressing-the-grey-screen-in-flutter-5e72c31f408f
+
+
+
+//obfuscation
+//https://medium.com/@gizemgizgg/obfuscation-in-flutter-and-dart-mysterious-codes-64d91f0fad10
+//flutter build apk --release --obfuscate --split-debug-info=./build_info
+//flutter build ios --release --obfuscate --split-debug-info=./build_info
