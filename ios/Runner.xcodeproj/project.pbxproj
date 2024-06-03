@@ -478,7 +478,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				OTHER_SWIFT_FLAGS = "$(inherited) -D COCOAPODS DART_OBFUSCATION";
+				OTHER_SWIFT_FLAGS = "$(inherited) -D COCOAPODS -D DART_OBFUSCATION";
 				PRODUCT_BUNDLE_IDENTIFIER = com.donna6355.test;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
@@ -659,7 +659,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				OTHER_SWIFT_FLAGS = "$(inherited) -D COCOAPODS DART_OBFUSCATION";
+				OTHER_SWIFT_FLAGS = "$(inherited) -D COCOAPODS -D DART_OBFUSCATION";
 				PRODUCT_BUNDLE_IDENTIFIER = com.donna6355.test;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
@@ -684,7 +684,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				OTHER_SWIFT_FLAGS = "$(inherited) -D COCOAPODS DART_OBFUSCATION";
+				OTHER_SWIFT_FLAGS = "$(inherited) -D COCOAPODS -D DART_OBFUSCATION";
 				PRODUCT_BUNDLE_IDENTIFIER = com.donna6355.test;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
