@@ -71,3 +71,4 @@ void main() {
 //https://medium.com/@gizemgizgg/obfuscation-in-flutter-and-dart-mysterious-codes-64d91f0fad10
 //flutter build apk --release --obfuscate --split-debug-info=./build_info
 //flutter build ios --release --obfuscate --split-debug-info=./build_info
+//not sure it helps to reduce the app size...
